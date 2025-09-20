@@ -32,7 +32,7 @@ export function BlogInlineTOC({ items, className, children, ...props }: BlogInli
       <Collapsible
         {...props}
         className={cn(
-          'not-prose rounded-lg border bg-fd-card text-fd-card-foreground shadow-sm',
+          'rounded-lg border bg-[color:var(--color-fd-card)] text-[color:var(--color-fd-card-foreground)] shadow-sm',
           className,
         )}
       >
@@ -44,7 +44,7 @@ export function BlogInlineTOC({ items, className, children, ...props }: BlogInli
           <div className="relative px-2 pb-3 pt-1 text-sm">
             <TocThumb
               containerRef={containerRef}
-              className="pointer-events-none absolute left-0 top-[--fd-top] h-[--fd-height] w-px rounded-full bg-fd-primary transition-all"
+              className="pointer-events-none absolute left-0 top-[--fd-top] h-[--fd-height] w-px rounded-full bg-[color:var(--color-fd-primary)] transition-all"
             />
             <div ref={containerRef} className="ps-2">
               <TocTree nodes={tree} />
@@ -68,7 +68,7 @@ function TocTree({ nodes, level = 1 }: { nodes: TocTreeNode[]; level?: number })
           <TocPrimitive.TOCItem
             href={node.url}
             className={cn(
-              'block border-s-2 border-transparent pe-2 py-1.5 text-fd-muted-foreground transition-colors hover:text-fd-accent-foreground data-[active=true]:border-fd-primary data-[active=true]:text-fd-primary',
+              'block border-s-2 border-transparent pe-2 py-1.5 text-[color:var(--color-fd-muted-foreground)] transition-colors hover:text-[color:var(--color-fd-accent-foreground)] data-[active=true]:border-[color:var(--color-fd-primary)] data-[active=true]:text-[color:var(--color-fd-primary)]',
               level === 1 && 'ps-3',
               level === 2 && 'ps-6',
               level >= 3 && 'ps-8',

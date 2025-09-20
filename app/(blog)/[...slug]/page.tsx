@@ -23,16 +23,22 @@ export default async function Page(props: BlogPageProps) {
   return (
     <article className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-6 pt-16 pb-20">
       <header className="flex flex-col gap-4">
-        <Link href="/" className="self-start text-[0.9rem] text-fd-muted-foreground no-underline">
+        <Link
+          href="/"
+          className="self-start text-[0.9rem] text-[color:var(--color-fd-muted-foreground)] no-underline"
+        >
           ← Back to posts
         </Link>
         <div className="flex flex-col gap-3">
-          <time dateTime={publishedAt.toISOString()} className="text-fd-muted-foreground">
+          <time
+            dateTime={publishedAt.toISOString()}
+            className="text-[color:var(--color-fd-muted-foreground)]"
+          >
             {formatDate(publishedAt)}
           </time>
           <h1 className="m-0 text-[2.5rem] font-bold">{page.data.title}</h1>
           {page.data.description ? (
-            <p className="m-0 text-fd-muted-foreground leading-relaxed">
+            <p className="m-0 leading-relaxed text-[color:var(--color-fd-muted-foreground)]">
               {page.data.description}
             </p>
           ) : null}
@@ -41,7 +47,7 @@ export default async function Page(props: BlogPageProps) {
               {page.data.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-fd-muted px-3 py-1 text-[0.8rem] uppercase tracking-[0.08em] text-fd-primary"
+                  className="rounded-full bg-[color:var(--color-fd-muted)] px-3 py-1 text-[0.8rem] uppercase tracking-[0.08em] text-[color:var(--color-fd-primary)]"
                 >
                   {tag}
                 </span>

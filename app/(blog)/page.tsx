@@ -20,7 +20,7 @@ export default function BlogIndexPage() {
           Personal Blog
         </p>
         <h1 className="text-4xl font-bold">My Blog</h1>
-        <p className="m-0 text-fd-muted-foreground leading-relaxed">
+        <p className="m-0 leading-relaxed text-[color:var(--color-fd-muted-foreground)]">
           Welcome! Here you can find quick notes and longer posts built with the Fumadocs blog
           pipeline.
         </p>
@@ -32,21 +32,24 @@ export default function BlogIndexPage() {
           return (
             <article key={post.url} className="flex flex-col gap-3">
               <div className="flex flex-wrap items-center gap-2">
-                <time dateTime={publishedAt.toISOString()} className="text-[0.95rem] text-fd-muted-foreground">
+                <time
+                  dateTime={publishedAt.toISOString()}
+                  className="text-[0.95rem] text-[color:var(--color-fd-muted-foreground)]"
+                >
                   {formatDate(publishedAt)}
                 </time>
                 {post.data.tags && post.data.tags.length > 0 ? (
-                  <span className="rounded-full bg-fd-muted px-2 py-1 text-[0.8rem] uppercase tracking-[0.08em] text-fd-primary">
+                  <span className="rounded-full bg-[color:var(--color-fd-muted)] px-2 py-1 text-[0.8rem] uppercase tracking-[0.08em] text-[color:var(--color-fd-primary)]">
                     {post.data.tags.join(' / ')}
                   </span>
                 ) : null}
               </div>
               <h2 className="text-[1.75rem] font-semibold">
-                <Link href={post.url} className="text-inherit no-underline">
+                <Link href={post.url} className="text-[inherit] no-underline">
                   {post.data.title}
                 </Link>
               </h2>
-              <p className="m-0 text-fd-muted-foreground leading-relaxed">
+              <p className="m-0 leading-relaxed text-[color:var(--color-fd-muted-foreground)]">
                 {post.data.description}
               </p>
               <div>
