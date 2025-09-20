@@ -1,0 +1,1 @@
+TypeScript + Next.js 15.5.3 with React 19.1, using fumadocs-ui/fumadocs-core for layout and fumadocs-mdx for MDX processing. Strict TS compiler settings enabled; JSX compiled via Next plugin.

@@ -1,0 +1,1 @@
+Before handing off changes, run `npm run build` to ensure Next.js compiles. If touching MDX content, double-check frontmatter fields (title, description, date, tags). No dedicated lint/test scripts exist, so rely on TypeScript errors and manual QA via `npm run dev`.

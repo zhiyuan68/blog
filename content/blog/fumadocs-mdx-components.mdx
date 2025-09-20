@@ -1,0 +1,185 @@
+---
+title: "Fumadocs MDX component cookbook"
+description: "Practical examples that demonstrate how to use every built-in MDX helper, from callouts and cards to videos and file trees."
+date: 2025-02-18
+tags:
+  - reference
+  - mdx
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Cards, Card } from 'fumadocs-ui/components/card';
+import { Steps, Step } from 'fumadocs-ui/components/steps';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Files, File, Folder } from 'fumadocs-ui/components/files';
+import {
+  CodeBlockTabs,
+  CodeBlockTabsList,
+  CodeBlockTabsTrigger,
+  CodeBlockTab,
+} from 'fumadocs-ui/components/codeblock';
+
+# Introduction
+
+This guide doubles as a live playground and a reference for the Fumadocs MDX component suite. It
+covers the default Markdown syntax as well as the custom components that ship with
+`fumadocs-ui`, so you can quickly copy and adapt the patterns for your own posts.
+
+## Headings and paragraphs
+
+Use standard Markdown headings (`#` through `######`) to create a clear document structure. The blog
+layout automatically generates a table of contents from these headings, which appears to the left of
+the article on desktop and above the content on mobile.
+
+Paragraphs work as you would expect—just separate them with blank lines. You can mix **bold**,
+_italic_, and `inline code` for emphasis.
+
+## Lists and callouts
+
+- Bullet lists are ideal for short tips.
+- Ordered lists are perfect for linear tasks.
+- Nested lists are also supported.
+
+1. Start your project with `npm create fumadocs@latest`.
+2. Pick the **blog** template.
+3. Update the generated MDX files and push to your repository.
+
+<Callout type="info" title="Reusable alerts">
+  Callouts draw attention to important notes. Pass a `type` of `info`, `success`, `warning`, or
+  `error` to switch the accent colour.
+</Callout>
+
+## Embedding images and media
+
+Images use the standard Markdown syntax. You can add a `title` attribute if you want an optional
+caption. When working offline, you can also drop down to raw HTML to specify the `width` and
+`height` attributes explicitly:
+
+<img
+  src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80"
+  alt="A warm workspace illuminated by natural light"
+  title="Workspace inspiration"
+  loading="lazy"
+  width="1200"
+  height="800"
+  style={{ borderRadius: '16px' }}
+/>
+
+Videos can be embedded with any React-friendly component. Here is a YouTube iframe, but you can
+swap it for a `<video>` tag or a bespoke React player:
+
+<iframe
+  width="100%"
+  height="360"
+  src="https://www.youtube.com/embed/Ke90Tje7VS0"
+  title="React in 100 Seconds"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerPolicy="strict-origin-when-cross-origin"
+  allowFullScreen
+  style={{ borderRadius: '12px', border: 'none' }}
+/>
+
+## Tables for structured data
+
+Use GitHub-flavoured Markdown to keep comparison tables compact and readable.
+
+| Component       | Ideal use case                 | Notes                               |
+| --------------- | ------------------------------ | ----------------------------------- |
+| `Callout`       | Highlight warnings or tips     | Supports four intent styles         |
+| `Cards`         | Present links side-by-side     | Works great for resource libraries  |
+| `Steps`         | Break down tutorials           | Each step renders with consistent UI|
+| `Tabs`          | Compare code samples or UIs    | Keyboard accessible out of the box  |
+| `Files`         | Showcase project structures    | Supports nested folders and files   |
+
+## Code blocks and interactive tabs
+
+Triple-backtick fences render syntax-highlighted code immediately:
+
+```tsx
+export function Hello() {
+  return <span className="font-semibold">Hello, world!</span>;
+}
+```
+
+When you need to compare multiple snippets, the code block tabs component keeps everything tidy:
+
+<CodeBlockTabs defaultValue="npm">
+  <CodeBlockTabsList>
+    <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="bun">Bun</CodeBlockTabsTrigger>
+  </CodeBlockTabsList>
+  <CodeBlockTab value="npm" language="bash">
+{`npm install fumadocs-ui`}
+  </CodeBlockTab>
+  <CodeBlockTab value="pnpm" language="bash">
+{`pnpm add fumadocs-ui`}
+  </CodeBlockTab>
+  <CodeBlockTab value="bun" language="bash">
+{`bun add fumadocs-ui`}
+  </CodeBlockTab>
+</CodeBlockTabs>
+
+## Cards for feature highlights
+
+<Cards>
+  <Card title="Starter templates" description="Bootstrap a blog or docs portal with one command." href="https://fumadocs.dev/blog/make-a-blog" />
+  <Card title="Content search" description="Automatic indexing means readers find answers faster." />
+  <Card title="MDX components" description="Compose callouts, tabs, cards, and more using React." />
+</Cards>
+
+## Step-by-step walkthroughs
+
+<Steps>
+  <Step>
+    <h3>Draft the post</h3>
+    <p>Write your article in `content/blog/your-post.mdx`, adding metadata at the top.</p>
+  </Step>
+  <Step>
+    <h3>Preview locally</h3>
+    <p>Run `npm run dev` and confirm the table of contents, media, and code samples render correctly.</p>
+  </Step>
+  <Step>
+    <h3>Publish with confidence</h3>
+    <p>Commit the MDX file and push—Fumadocs handles the rest of the deployment pipeline.</p>
+  </Step>
+</Steps>
+
+## Tabs for side-by-side comparisons
+
+<Tabs items={['Pros', 'Cons']}>
+  <Tab>
+    <ul>
+      <li>Responsive out of the box.</li>
+      <li>Accessible keyboard navigation.</li>
+      <li>Simple API powered by Radix UI.</li>
+    </ul>
+  </Tab>
+  <Tab>
+    <ul>
+      <li>Requires JavaScript for interaction.</li>
+      <li>Best suited for short content in each pane.</li>
+    </ul>
+  </Tab>
+</Tabs>
+
+## File trees and attachments
+
+<Files>
+  <Folder name="content" defaultOpen>
+    <Folder name="blog" defaultOpen>
+      <File name="welcome.mdx" />
+      <File name="publishing-checklist.mdx" />
+      <File name="fumadocs-mdx-components.mdx" />
+    </Folder>
+  </Folder>
+  <Folder name="public">
+    <File name="robots.txt" />
+  </Folder>
+</Files>
+
+## Putting it all together
+
+Combine these building blocks to craft expressive, information-rich articles. Every component shown
+here is available without additional configuration, so you can focus on storytelling while Fumadocs
+takes care of presentation, theming, and navigation.

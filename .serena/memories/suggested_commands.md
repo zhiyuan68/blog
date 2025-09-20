@@ -1,0 +1,5 @@
+- Install deps: `npm install`
+- Dev server: `npm run dev`
+- Production build: `npm run build`
+- Start preview server (after build): `npm run start`
+- Rebuild MDX cache (postinstall hook runs automatically): `npm run postinstall`

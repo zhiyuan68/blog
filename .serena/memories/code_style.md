@@ -1,0 +1,1 @@
+Primarily TypeScript React components; strict compiler options enforce type safety. Layouts currently rely on inline styles rather than CSS modules. JSX kept minimal with descriptive component names; optional chaining and array methods used for data transforms.

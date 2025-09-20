@@ -1,0 +1,1 @@
+Fumadocs blog starter built with Next.js 15 and React 19, configured to render MDX posts from `content/blog`. Focus is on blog-style navigation and article pages powered by fumadocs-ui and fumadocs-core components.

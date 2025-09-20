@@ -1,0 +1,1 @@
+Key folders: `app/` for Next.js routes, with `(blog)/page.tsx` indexing posts and `[...slug]/page.tsx` article rendering; `content/blog/` stores MDX posts; `components/` holds shared UI parts; `lib/` contains data source wiring like `source.ts` and layout options.
