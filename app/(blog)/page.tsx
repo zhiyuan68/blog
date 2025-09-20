@@ -14,7 +14,7 @@ export default function BlogIndexPage() {
   });
 
   return (
-    <main className="mx-auto flex w-full max-w-[60rem] flex-1 flex-col gap-12 px-6 py-16">
+    <main className="mx-auto flex w-full max-w-[72rem] flex-1 flex-col gap-12 px-6 py-16">
       <header className="flex flex-col gap-3">
         <p className="text-[0.9rem] uppercase tracking-[0.08em]">
           Personal Blog
@@ -31,32 +31,33 @@ export default function BlogIndexPage() {
           const publishedAt = getDate(post.data.date);
           return (
             <article key={post.url} className="flex flex-col gap-3">
-              <div className="flex flex-wrap items-center gap-2">
-                <time
-                  dateTime={publishedAt.toISOString()}
-                  className="text-[0.95rem] text-[color:var(--color-fd-muted-foreground)]"
-                >
-                  {formatDate(publishedAt)}
-                </time>
-                {post.data.tags && post.data.tags.length > 0 ? (
-                  <span className="rounded-full bg-[color:var(--color-fd-muted)] px-2 py-1 text-[0.8rem] uppercase tracking-[0.08em] text-[color:var(--color-fd-primary)]">
-                    {post.data.tags.join(' / ')}
-                  </span>
-                ) : null}
-              </div>
               <h2 className="text-[1.75rem] font-semibold">
                 <Link href={post.url} className="text-[inherit] no-underline">
                   {post.data.title}
                 </Link>
               </h2>
-              <p className="m-0 leading-relaxed text-[color:var(--color-fd-muted-foreground)]">
-                {post.data.description}
-              </p>
-              <div>
-                <Link href={post.url} className="font-semibold underline decoration-2 underline-offset-4">
-                  Read more →
-                </Link>
+              <div className="flex flex-wrap items-center gap-2 text-[0.95rem] text-[color:var(--color-fd-muted-foreground)]">
+                <time dateTime={publishedAt.toISOString()} className="text-[inherit]">
+                  {formatDate(publishedAt)}
+                </time>
+                {post.data.tags && post.data.tags.length > 0 ? (
+                  <div className="flex flex-wrap items-center gap-2">
+                    {post.data.tags.map((tag: string) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-[color:var(--color-fd-muted)] px-3 py-1 text-[0.8rem] uppercase tracking-[0.08em] text-[color:var(--color-fd-primary)]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
               </div>
+              {post.data.description ? (
+                <p className="m-0 leading-relaxed text-[color:var(--color-fd-muted-foreground)]">
+                  {post.data.description}
+                </p>
+              ) : null}
             </article>
           );
         })}
