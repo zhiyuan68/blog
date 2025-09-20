@@ -21,53 +21,27 @@ export default async function Page(props: BlogPageProps) {
   const toc = page.data.toc ?? [];
 
   return (
-    <article
-      style={{
-        margin: '0 auto',
-        padding: '4rem 1.5rem 5rem',
-        width: '100%',
-        maxWidth: '768px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '2.5rem',
-      }}
-    >
-      <header style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <Link
-          href="/"
-          style={{
-            alignSelf: 'flex-start',
-            textDecoration: 'none',
-            fontSize: '0.9rem',
-            color: 'var(--muted-foreground, #666)',
-          }}
-        >
+    <article className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-6 pt-16 pb-20">
+      <header className="flex flex-col gap-4">
+        <Link href="/" className="self-start text-[0.9rem] text-fd-muted-foreground no-underline">
           ← Back to posts
         </Link>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <time dateTime={publishedAt.toISOString()} style={{ color: 'var(--muted-foreground, #666)' }}>
+        <div className="flex flex-col gap-3">
+          <time dateTime={publishedAt.toISOString()} className="text-fd-muted-foreground">
             {formatDate(publishedAt)}
           </time>
-          <h1 style={{ fontSize: '2.5rem', fontWeight: 700, margin: 0 }}>{page.data.title}</h1>
+          <h1 className="m-0 text-[2.5rem] font-bold">{page.data.title}</h1>
           {page.data.description ? (
-            <p style={{ margin: 0, color: 'var(--muted-foreground, #666)', lineHeight: 1.6 }}>
+            <p className="m-0 text-fd-muted-foreground leading-relaxed">
               {page.data.description}
             </p>
           ) : null}
           {page.data.tags && page.data.tags.length > 0 ? (
-            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+            <div className="flex flex-wrap gap-2">
               {page.data.tags.map((tag) => (
                 <span
                   key={tag}
-                  style={{
-                    fontSize: '0.8rem',
-                    background: 'var(--fd-muted, rgba(99,102,241,0.12))',
-                    color: 'var(--fd-primary, #6366f1)',
-                    padding: '0.25rem 0.65rem',
-                    borderRadius: '9999px',
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                  }}
+                  className="rounded-full bg-fd-muted px-3 py-1 text-[0.8rem] uppercase tracking-[0.08em] text-fd-primary"
                 >
                   {tag}
                 </span>

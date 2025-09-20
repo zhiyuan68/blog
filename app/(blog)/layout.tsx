@@ -15,7 +15,7 @@ export default function BlogLayout({ children }: { children: ReactNode }) {
   const tree = buildDirectory(posts);
 
   return (
-    <HomeLayout {...baseOptions()} style={{ flex: 1 }}>
+    <HomeLayout {...baseOptions()} className="flex-1">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-10 lg:flex-row lg:gap-16 lg:px-8">
         <BlogDirectory tree={tree} />
         <div className="min-w-0 flex-1">{children}</div>
