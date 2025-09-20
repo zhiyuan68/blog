@@ -6,7 +6,7 @@ export const metadata = {
   description: 'Stories, notes, and experiments powered by Fumadocs.',
 };
 
-export default function BlogIndexPage() {å
+export default function BlogIndexPage() {
   const posts = [...source.getPages()].sort((a, b) => {
     const dateA = getDate(a.data.date);
     const dateB = getDate(b.data.date);
@@ -14,9 +14,7 @@ export default function BlogIndexPage() {å
   });
 
   return (
-
     <main className="mx-auto flex w-full max-w-[72rem] flex-1 flex-col gap-12 px-6 py-16">
-
       <header className="flex flex-col gap-3">
         <p className="text-[0.9rem] uppercase tracking-[0.08em]">
           Personal Blog
@@ -33,7 +31,6 @@ export default function BlogIndexPage() {å
           const publishedAt = getDate(post.data.date);
           return (
             <article key={post.url} className="flex flex-col gap-3">
-
               <h2 className="text-[1.75rem] font-semibold">
                 <Link href={post.url} className="text-[inherit] no-underline">
                   {post.data.title}
@@ -45,7 +42,7 @@ export default function BlogIndexPage() {å
                 </time>
                 {post.data.tags && post.data.tags.length > 0 ? (
                   <div className="flex flex-wrap items-center gap-2">
-                    {post.data.tags.map((tag) => (
+                    {post.data.tags.map((tag: string) => (
                       <span
                         key={tag}
                         className="rounded-full bg-[color:var(--color-fd-muted)] px-3 py-1 text-[0.8rem] uppercase tracking-[0.08em] text-[color:var(--color-fd-primary)]"
@@ -61,7 +58,6 @@ export default function BlogIndexPage() {å
                   {post.data.description}
                 </p>
               ) : null}
-
             </article>
           );
         })}
