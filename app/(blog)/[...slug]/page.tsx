@@ -21,7 +21,9 @@ export default async function Page(props: BlogPageProps) {
   const toc = page.data.toc ?? [];
 
   return (
+
     <article className="mx-auto flex w-full max-w-[64rem] flex-col gap-10 px-6 pt-16 pb-20">
+
       <header className="flex flex-col gap-4">
         <Link
           href="/"

@@ -6,7 +6,7 @@ export const metadata = {
   description: 'Stories, notes, and experiments powered by Fumadocs.',
 };
 
-export default function BlogIndexPage() {
+export default function BlogIndexPage() {å
   const posts = [...source.getPages()].sort((a, b) => {
     const dateA = getDate(a.data.date);
     const dateB = getDate(b.data.date);
@@ -14,7 +14,9 @@ export default function BlogIndexPage() {
   });
 
   return (
+
     <main className="mx-auto flex w-full max-w-[72rem] flex-1 flex-col gap-12 px-6 py-16">
+
       <header className="flex flex-col gap-3">
         <p className="text-[0.9rem] uppercase tracking-[0.08em]">
           Personal Blog
@@ -31,6 +33,7 @@ export default function BlogIndexPage() {
           const publishedAt = getDate(post.data.date);
           return (
             <article key={post.url} className="flex flex-col gap-3">
+
               <h2 className="text-[1.75rem] font-semibold">
                 <Link href={post.url} className="text-[inherit] no-underline">
                   {post.data.title}
@@ -58,6 +61,7 @@ export default function BlogIndexPage() {
                   {post.data.description}
                 </p>
               ) : null}
+
             </article>
           );
         })}
